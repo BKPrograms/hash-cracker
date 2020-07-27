@@ -26,7 +26,7 @@ Hash cracker is a simple script written in python3 that can be used to identify 
 * Windows
 
 ### Installation:
-1. Open terminal or cmd and run the following: `git clone https://github.com/BKPrograms/hash-cracker.git`
+1. Open terminal or cmd and run the following: `git clone https://github.com/BKPrograms/hash-cracker.git` or just download the zip file.
 
 2. Next, navigate into the newly cloned directory and run `pip install -r requirements.txt`
 
