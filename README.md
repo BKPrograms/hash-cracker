@@ -1,6 +1,7 @@
 # hash-cracker
 ## Description:
-Hash cracker is a simple script written in python3 that can be used to identify the original value of a hash. The script takes in a wordlist, the actual hash to crack, and the algorithm which the hash has been produced from. **Disclaimer:** This will not work with python2 so please run this script with python3.
+Hash cracker is a simple script written in python3 that can be used to identify the original value of a hash. The script takes in a wordlist, the actual hash to crack, and the algorithm which the hash has been produced from. 
+**Disclaimer:** This will not work with python2 so please run this script with python3.
 
 ### Hashing Algorithms Supported:
 * SHA-1
