@@ -62,9 +62,6 @@ def crack(wordList, hash, algorithm):
     except FileNotFoundError:
         print("ERROR FILE NOT FOUND! Did you put the correct wordlist file path?")
 
-    except:
-        print("Something went wrong! Either run the script again or create")
-
 clearTerminal()
 
 optionsToUse = getOptions()
