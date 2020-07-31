@@ -1,6 +1,6 @@
 # hash-cracker
 ## Description:
-Hash cracker is a simple script written in python3 that can be used to identify the original value of a hash. The script takes in a wordlist, the actual hash to crack, and the algorithm which the hash has been produced from. 
+Hash cracker is a simple script written in python3 that can be used to identify the original value of a hash. The script takes in a wordlist, the actual hash to crack or a list of hashes to crack, and the algorithm which the hash has been produced from. 
 **Disclaimer:** This will not work with python2 so please run this script with python3.
 
 ### Hashing Algorithms Supported:
@@ -30,11 +30,12 @@ Hash cracker is a simple script written in python3 that can be used to identify 
 
 2. Next, navigate into the newly cloned directory and run `pip install -r requirements.txt`
 
-3. Finally, to run the script `python3 hashCracker.py -w wordlistYouWantToUse.txt -a algorithmToUse -h hashToCrack` or run `python3 hashCracker.py --help` for more info
+3. a) Finally, to run the script `python3 hashCracker.py -w wordlistYouWantToUse.txt -a algorithmToUse -c hashToCrack/hashListToCrack.txt` or run `python3 hashCracker.py --help` for more info.
+   b) If a list of hashes has has been entered instead of a singular hash, you will be prompted to select from a range of Attack Modes
 
 ### Usage:
 
-`python3 hashCracker.py -w wordlistYouWantToUse.txt -a algorithmToUse -h hashToCrack`. Note: make sure to include the full filepath to the wordlistYouWantToUse.txt
+`python3 hashCracker.py -w wordlistYouWantToUse.txt -a algorithmToUse -c hashToCrack/hashListToCrack.txt`. Note: make sure to include the full filepath to the wordlistYouWantToUse.txt and hashListToCrack.txt.
 
 ## Issues and Errors:
 
