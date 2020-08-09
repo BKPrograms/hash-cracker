@@ -6,6 +6,7 @@ try:
     import os
     import time
     from art import *
+    import random
 
 except ImportError:
     print("You seem to be missing some necessary libraries, please run pip install -r requirements.txt")
@@ -72,7 +73,8 @@ def hashListCrack(wordList, hashList, algorithm):
     try:
         print(f"\nSelect {colored('ATTACK MODE', 'red')}")
         print("1. Parallel attack, every hash gets compared to the word in the wordlist at it's corresponding position")
-        print("2. Intense attack, each hash is compared to EVERY word in the wordlist in order (will take longest time)")
+        print("2. Intense attack, every hash is compared to EVERY word in the wordlist in order")
+        print("3. Random attack, every hash is compared to a random word in the wordlist only once")
         print("0. Exit Hash-Cracker")
         attackMode = input(f"{colored('Hash-Cracker > ', 'green')}")
         if attackMode == "0":
@@ -81,7 +83,7 @@ def hashListCrack(wordList, hashList, algorithm):
             clearTerminal()
             exit()
 
-        while attackMode not in ["1", "2"]:
+        while attackMode not in ["1", "2", "3"]:
             print("INVALID CHOICE!\n")
             attackMode = input(f"{colored('Hash-Cracker > ', 'green')}")
 
@@ -107,6 +109,21 @@ def hashListCrack(wordList, hashList, algorithm):
                             if hash.strip() == h.hexdigest():
                                 resultsString = resultsString + f"{hash.strip()} was cracked to be {colored(word, 'green')}\n"
                                 listOfHashes.remove(hash)
+
+                elif attackMode == "3":
+                    for hash in hashListFile.readlines():
+                        wordListCopy = listOfWords[:]
+                        while len(wordListCopy) != 0:
+                            randomIndex = random.randint(0, len(wordListCopy)-1)
+                            randomWord = wordListCopy[randomIndex]
+                            h = hashlib.new(algorithm)
+                            h.update(randomWord.strip().encode('utf-8'))
+                            if hash.strip() == h.hexdigest():
+                                resultsString = resultsString + f"{hash.strip()} was cracked to be {colored(randomWord, 'green')}\n"
+                                listOfHashes.remove(hash)
+                                break
+                            else:
+                                wordListCopy.remove(randomWord)
 
                 print("\n" + resultsString)
                 if len(listOfHashes) > 0:
@@ -135,7 +152,8 @@ print(createdBy + profile)
 
 time.sleep(5)
 
-if ".txt" in optionsToUse.hashToCrack:
+
+if optionsToUse.hashToCrack[-4:] == ".txt":
     hashListCrack(wordList=optionsToUse.wordlistToUse, hashList=optionsToUse.hashToCrack,
                   algorithm=optionsToUse.algorithmToUse)
 else:
